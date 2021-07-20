@@ -38,6 +38,14 @@ class Shelter < ApplicationRecord
       app.associated_pets(app.id)
     end.map do |pet|
       Shelter.find(pet.shelter_id)
+    end.uniq
+  end
+
+  def associated_applications
+    pets.flat_map do |pet|
+      pet.pet_applicants
+    end.flat_map do |pet_applicant|
+      Applicant.find(pet_applicant.applicant_id)
     end
   end
 end
