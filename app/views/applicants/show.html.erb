@@ -15,25 +15,36 @@
 <p><%= @application.status %></p>
 
 <h2>Search Adoptable Pets:</h2>
-<%= form_with  url: "/applicants/#{@application.id}", method: :get, local: true do |form|%>
-  <%= form.label :search %>
-  <%= form.text_field :search %>
-  <%= form.submit 'Search' %>
-<% end %>
-
-<% @search_pets.each do |pet| %>
-  <div class = "result" id =<%= pet.id %>>
-    <p><%= pet.name %></p>
-    <%= form_with url: "/applicants/#{@application.id}?pet_id=#{pet.id}", method: :patch, local: true do |form|  %>
-      <%= form.submit 'Adopt this Pet' %>
-    <% end %>
+<div class="row">
+  <div class="col-2">
+    <%= form_with  url: "/applicants/#{@application.id}", method: :get, local: true do |form|%>
+      <%= form.label :search, class:
+      "form-label" %>
   </div>
-<% end %>
-
-<% if (@added_pets.length > 0) && (@application.status.downcase == 'in progress')%>
-  <%= form_with url: "/applicants/#{@application.id}/submit", method: :patch, local: true do |form|  %>
-    <%= form.label :home_description, "Why I would make a good owner for these pet(s):" %>
-    <%= form.text_area :home_description  %>
-    <%= form.submit 'Submit Application'  %>
+  <div class="col-3">
+    <%= form.text_field :search, class:
+      "form-control" %>
+  </div>
+  <div class="col-2">
+    <%= form.submit 'Search', class: "btn" %>
   <% end %>
-<% end %>
+  </div>
+
+  <% @search_pets.each do |pet| %>
+    <div class = "result" id =<%= pet.id %>>
+      <p><%= pet.name %></p>
+      <%= form_with url: "/applicants/#{@application.id}?pet_id=#{pet.id}", method: :patch, local: true do |form|  %>
+        <%= form.submit 'Adopt this Pet' %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if (@added_pets.length > 0) && (@application.status.downcase == 'in progress')%>
+    <%= form_with url: "/applicants/#{@application.id}/submit", method: :patch, local: true do |form|  %>
+      <%= form.label :home_description, "Why I would make a good owner for these pet(s):" %>
+      <%= form.text_area :home_description  %>
+      <%= form.submit 'Submit Application'  %>
+    <% end %>
+  <% end %>
+
+</div>
