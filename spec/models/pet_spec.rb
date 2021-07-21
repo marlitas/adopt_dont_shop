@@ -30,6 +30,7 @@ RSpec.describe Pet, type: :model do
     describe '#adoptable' do
       it 'returns adoptable pets' do
         expect(Pet.adoptable).to eq([@pet_1, @pet_2])
+        expect(Pet.adoptable).to_not eq([@pet_3])
       end
     end
   end
@@ -38,6 +39,7 @@ RSpec.describe Pet, type: :model do
     describe '.shelter_name' do
       it 'returns the shelter name for the given pet' do
         expect(@pet_3.shelter_name).to eq(@shelter_1.name)
+        expect(@pet_2.shelter_name).to eq('Aurora shelter')
       end
     end
   end
