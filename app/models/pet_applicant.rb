@@ -6,4 +6,6 @@ class PetApplicant < ApplicationRecord
     #potentially use find_by
     PetApplicant.find_by(pet_id: pet_id, applicant_id: applicant_id)
   end
+
+  
 end

@@ -20,9 +20,14 @@ RSpec.describe PetApplicant do
 
     @application1.pets << [@lana, @doc]
   end
+
   describe 'class methods' do
     it 'can find pet and application instance' do
       expect(PetApplicant.find_by_parents(@lana.id, @application1.id).pet_id).to eq(@lana.id)
     end
+  end
+
+  describe 'instance methods' do
+    
   end
 end

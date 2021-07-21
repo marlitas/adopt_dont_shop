@@ -22,4 +22,18 @@ class Applicant < ApplicationRecord
       self.status = 'In Progress'
     end
   end
+
+  def approved?(applicant_id)
+    application_pets = PetApplicant.where(applicant_id: applicant_id)
+    application_pets.all? do |pet|
+        pet.status == 'approve'
+    end
+  end
+
+  def all_decided?(applicant_id)
+    application_pets = PetApplicant.where(applicant_id: applicant_id)
+    application_pets.all? do |pet|
+      pet.status.present?
+    end
+  end
 end
