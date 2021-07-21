@@ -4,8 +4,8 @@ class Applicant < ApplicationRecord
   validates :city, presence: true
   validates :state, presence: true
   validates :zip_code, presence: true
+  validates :home_description, presence: true, on: :submit
   validate :status_progress
-  validate :description_filled
   has_many :pet_applicants
   has_many :pets, through: :pet_applicants
 
@@ -20,14 +20,6 @@ class Applicant < ApplicationRecord
 
     else
       self.status = 'In Progress'
-    end
-  end
-
-  def description_filled
-    if status.downcase == 'pending' && home_description.nil?
-      errors.add(:home_description, "Application not submitted: Home description can't be empty.")
-    else
-
     end
   end
 end

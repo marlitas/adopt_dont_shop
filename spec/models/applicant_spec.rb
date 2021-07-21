@@ -7,6 +7,12 @@ RSpec.describe Applicant do
   end
 
   describe 'validations' do
+    it{should validate_presence_of(:name)}
+    it{should validate_presence_of(:street_address)}
+    it{should validate_presence_of(:city)}
+    it{should validate_presence_of(:state)}
+    it{should validate_presence_of(:zip_code)}
+    it{should validate_presence_of(:home_description).on(:submit)}
     it 'can default a status' do
       application1 = Applicant.create!(name: 'Carina', street_address: '455 Cool Street', city: 'Portland', state: 'OR', zip_code: 23392, home_description: 'I love my furry friends and have a great yard they can roam around in')
 
@@ -15,15 +21,6 @@ RSpec.describe Applicant do
       application2 = Applicant.create!(name: 'Evan', street_address: '455 Cool Street', city: 'Portland', state: 'OR', zip_code: 23392, home_description: 'Im cool', status: 'Pending')
 
       expect(application2.status).to eq('Pending')
-    end
-
-    it 'can add error if description empty on submit' do
-      application1 = Applicant.create!(name: 'Carina', street_address: '455 Cool Street', city: 'Portland', state: 'OR', zip_code: 23392, status: 'In Progress')
-
-      application1.update(status: 'Pending')
-
-      expect(application1.errors[:home_description]).to eq(["Application not submitted: Home description can't be empty."])
-      expect(application1.status).to eq('In Progress')
     end
   end
 

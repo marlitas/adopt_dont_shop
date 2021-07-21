@@ -34,8 +34,9 @@ class ApplicantsController < ApplicationController
 
   def submit
     application = Applicant.find(params[:id])
-    application.update(home_description: params[:home_description], status: 'Pending')
-
+    application[:home_description] = params[:home_description]
+    application[:status] = 'Pending'
+    application.save!(context: :submit)
     redirect_to "/applicants/#{application.id}"
   end
 
