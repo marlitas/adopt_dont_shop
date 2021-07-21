@@ -15,9 +15,9 @@
 <p><%= @application.status %></p>
 
 <h2>Search Adoptable Pets:</h2>
+<%= form_with  url: "/applicants/#{@application.id}", method: :get, local: true do |form|%>
 <div class="row">
   <div class="col-2">
-    <%= form_with  url: "/applicants/#{@application.id}", method: :get, local: true do |form|%>
       <%= form.label :search, class:
       "form-label" %>
   </div>
@@ -27,8 +27,9 @@
   </div>
   <div class="col-2">
     <%= form.submit 'Search', class: "btn" %>
-  <% end %>
   </div>
+  <% end %>
+
 
   <% @search_pets.each do |pet| %>
     <div class = "result" id =<%= pet.id %>>
