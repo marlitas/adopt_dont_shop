@@ -40,10 +40,6 @@ class ApplicantsController < ApplicationController
   end
 
   def applicant_params
-    if params[:status].nil?
-      params.permit(:name, :street_address, :city, :state, :zip_code, :home_description).merge(status: 'In Progress')
-    else
-      params.permit(:name, :street_address, :city, :state, :zip_code, :home_description)
-    end
+    params.permit(:name, :street_address, :city, :state, :zip_code, :home_description)
   end
 end

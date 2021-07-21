@@ -4,7 +4,7 @@ class Applicant < ApplicationRecord
   validates :city, presence: true
   validates :state, presence: true
   validates :zip_code, presence: true
-  validate :status_progress, on: :create
+  validate :status_progress
   has_many :pet_applicants
   has_many :pets, through: :pet_applicants
 
