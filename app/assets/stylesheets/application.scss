@@ -14,3 +14,113 @@
  */
 
 @import "bootstrap";
+
+* {
+}
+
+body {
+  background-color: #F0E6BB;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.index:hover {
+  text-decoration: none;
+  color: black;
+  border: none;
+  font-weight: bolder;
+}
+
+a.nav-link {
+  color: black;
+}
+
+a.nav-link:hover {
+  color: black;
+  border: none;
+  font-weight: bolder;
+}
+
+.navbar {
+  background-color: #60BC98;
+}
+
+.pending {
+  margin: 20px;
+  padding: 5px;
+}
+
+.card {
+  background-color: #F0E6BB;
+  padding: 10px;
+  width: 40%;
+  margin: 2% auto;
+  border: dotted 4px #DD4126;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.index {
+  padding: 10px;
+  margin: 2%;
+  color: #202724;
+}
+
+a:hover {
+  color: white;
+  border: 2px solid #8A8770;
+}
+
+.form-control {
+  margin: 5px;
+  margin-top: 10px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+form .btn {
+  margin: 5px;
+}
+
+.edit {
+  background-color: #60BC98;
+  padding: 5px;
+  border-radius: 3px;
+  color: black;
+}
+
+.delete {
+  background-color: #202724;
+  padding: 5px;
+  border-radius: 3px;
+  color: #60BC98;
+}
+
+.pet {
+  border: dotted 4px #DD4126;
+  margin: 2%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn{
+  background-color: #60BC98;
+  margin: 10px;
+}
+
+.btn:hover{
+  color: white;
+  border: 2px solid #8A8770;
+}
+
+.applications {
+  
+}

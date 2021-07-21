@@ -52,6 +52,7 @@ RSpec.describe 'Application show page' do
         expect(current_path).to eq("/applicants/#{@application2.id}")
         expect(page).to have_content('Doc')
         expect(page).to have_content('Doctor')
+        expect(page).to_not have_content('Lana')
       end
 
       it 'searches are case insensitive' do
@@ -66,6 +67,7 @@ RSpec.describe 'Application show page' do
         expect(current_path).to eq("/applicants/#{@application2.id}")
         expect(page).to have_content('Doc')
         expect(page).to have_content('Doctor')
+        expect(page).to_not have_content('Lana')
       end
     end
 
