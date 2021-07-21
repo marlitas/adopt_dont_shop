@@ -22,6 +22,10 @@ body {
   background-color: #F0E6BB;
 }
 
+h1, h2 {
+  text-transform: capitalize;
+}
+
 a {
   text-decoration: none;
 }
@@ -86,7 +90,7 @@ a:hover {
   margin-top: 15px;
 }
 
-form .btn {
+form.btn {
   margin: 5px;
 }
 
@@ -121,6 +125,19 @@ form .btn {
   border: 2px solid #8A8770;
 }
 
-.applications {
-  
+.submit {
+  border-top: 2px solid #8A8770;
+  margin: 4% auto;
+  padding: 5px;
+}
+
+.submit h2 {
+  margin: 10px auto;
+  text-align: center;
+  display: block;
+  border-top: none;
+}
+
+.bottom {
+  align-items: flex-end;
 }
