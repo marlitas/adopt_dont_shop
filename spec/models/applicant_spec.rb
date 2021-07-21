@@ -16,6 +16,15 @@ RSpec.describe Applicant do
 
       expect(application2.status).to eq('Pending')
     end
+
+    it 'can add error if description empty on submit' do
+      application1 = Applicant.create!(name: 'Carina', street_address: '455 Cool Street', city: 'Portland', state: 'OR', zip_code: 23392, status: 'In Progress')
+
+      application1.update(status: 'Pending')
+
+      expect(application1.errors[:home_description]).to eq(["Application not submitted: Home description can't be empty."])
+      expect(application1.status).to eq('In Progress')
+    end
   end
 
   describe 'instance methods' do
