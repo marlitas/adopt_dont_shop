@@ -30,6 +30,11 @@ a {
   text-decoration: none;
 }
 
+.header {
+  margin-bottom: 2%;
+  padding: 10px;
+  border-bottom: 2px solid #8A8770;
+}
 a.index:hover {
   text-decoration: none;
   color: black;
@@ -52,16 +57,10 @@ a.nav-link:hover {
 }
 
 .pending {
-  margin: 20px;
-  padding: 5px;
-}
-
-.card {
-  background-color: #F0E6BB;
+  margin-top: 2% auto;
   padding: 10px;
-  width: 40%;
-  margin: 2% auto;
-  border: dotted 4px #DD4126;
+  border: 4px dotted #DD4126;
+  border-radius: 5px;
 }
 
 h1 {
@@ -140,4 +139,31 @@ form.btn {
 
 .bottom {
   align-items: flex-end;
+}
+
+ h4 a {
+  color: black;
+}
+
+h4 a:hover {
+  font-weight: bolder;
+  border: none;
+  color: black;
+}
+
+h3 a {
+ color: black;
+}
+
+h3 a:hover {
+ font-weight: bolder;
+ border: none;
+ color: black;
+}
+
+
+.pending h3 {
+  text-align: center;
+  margin: 1% auto;
+  padding: 10px;
 }

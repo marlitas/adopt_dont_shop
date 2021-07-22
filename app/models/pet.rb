@@ -13,7 +13,18 @@ class Pet < ApplicationRecord
     where(adoptable: true)
   end
 
+  def any_approved?(pet_id)
+    pet_applicants = PetApplicant.where(pet_id: pet_id)
+    pet_applicants.any? do |applicant|
+      Applicant.find(applicant.applicant_id).status == 'Approved'
+    end
+  end
+
+  def set_adoptable(pet_id)
+
+  end
+
   def all_applicants
-    
+
   end
 end

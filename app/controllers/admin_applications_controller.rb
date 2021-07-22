@@ -6,6 +6,11 @@ class AdminApplicationsController < ApplicationController
     @pets.each do |pet|
       @pet_applications[pet.id] = PetApplicant.find_by_parents(pet.id, params[:id]).status
     end
+    if @applicant.approved?(@applicant.id) && @applicant.all_decided?(@applicant.id)
+      @applicant.update!(status: 'Approved')
+    elsif @applicant.all_decided?(@applicant.id)
+      @applicant.update!(status: 'Rejected')
+    end
   end
 
   def update

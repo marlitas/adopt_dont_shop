@@ -127,5 +127,43 @@ RSpec.describe 'Admin Applications Show' do
         expect(page).to have_content('Rejected')
       end
     end
+
+    it 'display application status' do
+      visit "/admin/applications/#{@application1.id}"
+
+      expect(page).to have_content('Status: Pending')
+    end
+
+    it 'changes application status when all pets approved' do
+      visit "/admin/applications/#{@application1.id}"
+
+      expect(page).to have_content('Status: Pending')
+
+      within(:css, "##{@lana.id}") do
+        click_on('Approve')
+      end
+      within(:css, "##{@doc.id}") do
+        click_on('Approve')
+      end
+
+      expect(current_path).to eq("/admin/applications/#{@application1.id}")
+      expect(page).to have_content('Status: Approved')
+    end
+
+    it 'changes application status when pet rejected' do
+      visit "/admin/applications/#{@application1.id}"
+
+      expect(page).to have_content('Status: Pending')
+
+      within(:css, "##{@lana.id}") do
+        click_on('Reject')
+      end
+      within(:css, "##{@doc.id}") do
+        click_on('Approve')
+      end
+
+      expect(current_path).to eq("/admin/applications/#{@application1.id}")
+      expect(page).to have_content('Status: Rejected')
+    end
   end
 end
