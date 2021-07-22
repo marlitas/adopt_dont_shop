@@ -18,6 +18,13 @@ RSpec.describe Pet, type: :model do
     @pet_1 = @shelter_1.pets.create(name: 'Mr. Pirate', breed: 'tuxedo shorthair', age: 5, adoptable: true)
     @pet_2 = @shelter_1.pets.create(name: 'Clawdia', breed: 'shorthair', age: 3, adoptable: true)
     @pet_3 = @shelter_1.pets.create(name: 'Ann', breed: 'ragdoll', age: 3, adoptable: false)
+
+    @application1 = Applicant.create!(name: 'Carina', street_address: '455 Cool Street', city: 'Portland', state: 'OR', zip_code: 23392, status: 'In Progress')
+
+    @application2 = Applicant.create!(name: 'Evan', street_address: '1234 Sparky Lane', city: 'Portland', state: 'OR', zip_code: 23392, home_description: 'I like playing and throwing ball with dogs', status: 'In Progress')
+
+    @application1.pets << [@pet_3, @pet_2]
+    @application2.pets << [@pet_3, @pet_1]
   end
 
   describe 'class methods' do
@@ -41,6 +48,13 @@ RSpec.describe Pet, type: :model do
         expect(@pet_3.shelter_name).to eq(@shelter_1.name)
         expect(@pet_2.shelter_name).to eq('Aurora shelter')
       end
+    end
+
+    it 'can check if any applications have been approved for that pet' do
+      expect(@pet_3.any_approved?(@pet_3.id)).to be(false)
+
+      @application2.update!(status: 'Approved')
+      expect(@pet_3.any_approved?(@pet_3.id)).to be(true)
     end
   end
 end
