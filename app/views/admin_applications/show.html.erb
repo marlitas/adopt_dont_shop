@@ -12,11 +12,11 @@
     <% if @pet_applications[pet.id].nil? %>
 
       <%= form_with url:"/admin/applications/#{@applicant.id}?status=approve&pet_id=#{pet.id}", method: :patch, local: true do |form| %>
-        <%= form.submit 'Approve'  %>
+        <%= form.submit 'Approve', class: "btn"  %>
       <% end %>
 
       <%= form_with url:"/admin/applications/#{@applicant.id}?status=reject&pet_id=#{pet.id}", method: :patch, local: true do |form| %>
-        <%= form.submit 'Reject'  %>
+        <%= form.submit 'Reject', class: "btn"   %>
       <% end %>
 
     <% elsif @pet_applications[pet.id] == 'approve' %>
