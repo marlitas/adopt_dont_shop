@@ -1,12 +1,20 @@
-<h1>All Shelters</h1>
+<div class="header">
+  <h1>All Shelters</h1>
+</div>
 
-<%= link_to "Sort by number of pets", "/shelters?sort=pet_count" %>
+<div class="row">
+  <div class="col-4 bottom">
+    <%= link_to "Sort by number of pets", "/shelters?sort=pet_count", class: 'btn' %>
+  </div>
 
-<%= form_with url: "/shelters", method: :get, local: true do |f| %>
-  <%= f.label :search %>
-  <%= f.text_field :search %>
-  <%= f.submit "Search" %>
-<% end %>
+  <div class="col-8">
+    <%= form_with url: "/shelters", method: :get, local: true do |f| %>
+      <%= f.label :search %>
+      <%= f.text_field :search %>
+      <%= f.submit "Search" %>
+    <% end %>
+  </div>
+</div>
 
 <% @shelters.each do |shelter| %>
   <div id="shelter-<%= shelter.id %>">

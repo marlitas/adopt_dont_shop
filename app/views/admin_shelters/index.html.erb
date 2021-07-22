@@ -1,16 +1,22 @@
-<h1>Admin Access: Shelters Index</h1>
+<div class="header">
+  <h1>Admin Access: Shelters Index</h1>
+</div>
 
 <% @shelters.each do |shelter| %>
   <div class="index">
-    <h3><%= link_to "#{shelter.name}", "/admin/shelters/#{shelter.id}", class: "index" %></h3>
+    <h4><%= link_to "#{shelter.name}", "/admin/shelters/#{shelter.id}", class: "index" %></h4>
   </div>
 <% end %>
 
 
 
-<div class="card text-center pending">
-  <h4 class="card-title">Shelters with Pending Applications</h4>
-  <% @pending_shelters.each do |shelter| %>
-    <p class="card-body"><%= shelter.name  %></p>
-  <% end %>
+<div class="pending">
+  <h3>Shelters with Pending Applications</h3>
+  <div class="row">
+    <% @pending_shelters.each do |shelter| %>
+    <div class="col-4">
+      <p><%= shelter.name  %></p>
+    </div>
+    <% end %>
+  </div>
 </div>

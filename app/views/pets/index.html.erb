@@ -1,4 +1,6 @@
-<h1>All pets</h1>
+<div class="header">
+  <h1>All pets</h1>
+</div>
 
 <div class="row bottom">
   <div class="col-8">
@@ -20,10 +22,10 @@
 
 <% @pets.each do |pet| %>
 <div class="pet">
-  <h3><%= pet.name %></h3>
+  <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
   <p>Age: <%= pet.age %></p>
   <p>Breed: <%= pet.breed %></p>
-  <p>Adoptable: </p>
+  <p>Adoptable: <%= pet.adoptable %> </p>
   <p>You can find <%= pet.name %> at <%= pet.shelter_name %>!</p>
   <%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit", class: "edit" %>
   <%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete, class: "delete" %>

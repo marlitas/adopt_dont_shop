@@ -1,12 +1,27 @@
-<h1><%= @pet.name %></h1>
-<h4>Age:</h4>
-<p><%= @pet.age %> years old</p>
-<h4>Breed:</h4>
-<p><%= @pet.breed %></p>
-<h4>Adoptable:</h4>
-<p><%= @pet.adoptable %></p>
-<h4>Shelter:</h4>
-<p><%= @pet.shelter_name %></p>
+<div class="header">
+  <h1><%= @pet.name %></h1>
+</div>
+<div class="row">
+<div class="col-6">
+  <h4>Age:</h4>
+  <p><%= @pet.age %> years old</p>
+</div>
+<div class="col-6">
+  <h4>Breed:</h4>
+  <p><%= @pet.breed %></p>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <h4>Adoptable:</h4>
+    <p><%= @pet.adoptable %></p>
+  </div>
+  <div class="col-6">
+    <h4>Shelter:</h4>
+    <p><%= @pet.shelter_name %></p>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-2">
