@@ -23,7 +23,6 @@ class ApplicantsController < ApplicationController
   def update
     application = Applicant.find(params[:id])
     pet = Pet.find(params[:pet_id])
-    #add if else where we make sure we can find both objects before adding them in.
     application.pets << pet
 
     redirect_to "/applicants/#{application.id}"

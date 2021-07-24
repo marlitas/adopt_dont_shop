@@ -5,6 +5,4 @@ class PetApplicant < ApplicationRecord
   def self.find_by_parents(pet_id, applicant_id)
     PetApplicant.find_by(pet_id: pet_id, applicant_id: applicant_id)
   end
-
-
 end

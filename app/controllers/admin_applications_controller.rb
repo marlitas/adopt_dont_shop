@@ -1,7 +1,7 @@
 class AdminApplicationsController < ApplicationController
   def show
     @applicant = Applicant.find(params[:id])
-    @pets = @applicant.associated_pets(params[:id])
+    @pets = @applicant.associated_pets
     @pet_applications = {}
     @pets.each do |pet|
       @pet_applications[pet.id] = PetApplicant.find_by_parents(pet.id, params[:id]).status

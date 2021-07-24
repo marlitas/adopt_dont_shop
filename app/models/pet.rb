@@ -27,4 +27,8 @@ class Pet < ApplicationRecord
   def all_applicants
 
   end
+
+  def applicant_status(applicant_id)
+    PetApplicant.find_by_parents(self.id, applicant_id).status
+  end
 end

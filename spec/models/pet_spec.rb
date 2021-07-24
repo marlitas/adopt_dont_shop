@@ -56,5 +56,12 @@ RSpec.describe Pet, type: :model do
       @application2.update!(status: 'Approved')
       expect(@pet_3.any_approved?(@pet_3.id)).to be(true)
     end
+
+    it 'can grab applicant status' do
+      pet_applicant = PetApplicant.find_by_parents(@pet_3.id, @application1.id)
+      pet_applicant.update!(status: 'accept')
+
+      expect(@pet_3.applicant_status(@application1.id)).to eq('accept')
+    end
   end
 end

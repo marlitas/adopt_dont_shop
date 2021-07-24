@@ -9,7 +9,7 @@
 <% @pets.each do |pet| %>
   <div class = 'pet' id = "<%= pet.id  %>">
     <p>* <%= pet.name %> </p>
-    <% if @pet_applications[pet.id].nil? %>
+    <% if pet.applicant_status(@applicant.id).nil? %>
 
       <%= form_with url:"/admin/applications/#{@applicant.id}?status=approve&pet_id=#{pet.id}", method: :patch, local: true do |form| %>
         <%= form.submit 'Approve', class: "btn"  %>
@@ -19,10 +19,10 @@
         <%= form.submit 'Reject', class: "btn"   %>
       <% end %>
 
-    <% elsif @pet_applications[pet.id] == 'approve' %>
+    <% elsif pet.applicant_status(@applicant.id) == 'approve' %>
       <p>Approved</p>
 
-    <% elsif @pet_applications[pet.id] == 'reject' %>
+    <% elsif pet.applicant_status(@applicant.id) == 'reject' %>
       <p>Rejected</p>
     <% end %>
   </div>

@@ -28,6 +28,6 @@ RSpec.describe PetApplicant do
   end
 
   describe 'instance methods' do
-    
+  
   end
 end
