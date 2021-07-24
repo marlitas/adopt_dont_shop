@@ -35,7 +35,7 @@ class Shelter < ApplicationRecord
   def self.pending
     pending_applications = Applicant.where("status = 'pending'")
     pending_applications.flat_map do |app|
-      app.associated_pets(app.id)
+      app.associated_pets
     end.map do |pet|
       Shelter.find(pet.shelter_id)
     end.uniq

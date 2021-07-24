@@ -7,6 +7,5 @@ class AdminSheltersController < ApplicationController
 
   def show
     @shelter = Shelter.find(params[:id])
-    @applications = @shelter.associated_applications
   end
 end

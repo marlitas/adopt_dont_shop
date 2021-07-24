@@ -4,7 +4,7 @@
 
 <h2>Pending Applications</h2>
 
-<% @applications.each do |application| %>
+<% @shelter.associated_applications.each do |application| %>
 <div class="applications" id="<%= application.id  %>">
   <div class="row">
     <div class="col-2">
