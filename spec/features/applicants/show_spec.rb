@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Application show page' do
   before (:each) do
+    PetApplicant.destroy_all
+    Pet.destroy_all
+    Shelter.destroy_all
+    Applicant.destroy_all
+
     @furry = Shelter.create!(name:'Furrry Shelter', foster_program: true, city: 'New Orleans', rank: 5)
 
     @bruce = @furry.pets.create!(name: 'Bruce', age: 3, adoptable: true, breed: 'black lab')

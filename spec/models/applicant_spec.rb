@@ -41,7 +41,11 @@ RSpec.describe Applicant do
     end
 
     it 'can list associated pet names' do
-      expect(@application1.associated_pets(@application1.id)).to eq([@lana, @doc])
+      expect(@application1.associated_pets).to eq([@lana, @doc])
+    end
+
+    it 'can count number of associated pets' do
+      expect(@application1.pet_count).to eq(2)
     end
 
     it 'can approve application' do

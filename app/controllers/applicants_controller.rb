@@ -2,10 +2,7 @@ class ApplicantsController < ApplicationController
   def show
     @search_pets = []
     @application = Applicant.find(params[:id])
-    @added_pets = @application.associated_pets(params[:id])
-    if params[:search].nil?
-
-    else
+    unless params[:search].nil?
       @search_pets = Pet.search(params[:search])
     end
   end

@@ -8,7 +8,7 @@
 <% end %>
 
 <h3>Pet(s) to adopt:</h3>
-<% @added_pets.each do |pet| %>
+<% @application.associated_pets.each do |pet| %>
   <div class="adopt" id="<%= pet.id %>">
     <p><%= pet.name %></p>
   </div>
@@ -44,7 +44,7 @@
     </div>
   <% end %>
 
-  <% if (@added_pets.length > 0) && (@application.status.downcase == 'in progress')%>
+  <% if (@application.pet_count > 0) && (@application.status.downcase == 'in progress')%>
   <section class = "submit">
     <h2 class = "submit">Complete your Application</h2>
   <%= form_with url: "/applicants/#{@application.id}/submit", method: :patch, local: true do |form|  %>

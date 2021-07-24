@@ -9,10 +9,14 @@ class Applicant < ApplicationRecord
   has_many :pet_applicants
   has_many :pets, through: :pet_applicants
 
-  def associated_pets(applicant_id)
-    PetApplicant.where('applicant_id = ?', applicant_id).map do |join|
+  def associated_pets
+    PetApplicant.where('applicant_id = ?', self.id).map do |join|
       Pet.find(join.pet_id)
     end
+  end
+
+  def pet_count
+    self.associated_pets.length
   end
 
   def status_progress
